@@ -173,7 +173,7 @@ app.put("/accept/request/:id", (req, res) => {
   Projects.findOneAndUpdate(
     { _id: projectID },
     { $push: { users: requesterID } }
-  );
+  ).then((res) => console.log(res));
   Users.findOneAndUpdate(
     { _id: userId },
     { $pull: { notifications: { _id: notificationID } } }
