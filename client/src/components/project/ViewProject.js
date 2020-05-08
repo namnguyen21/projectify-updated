@@ -66,9 +66,9 @@ class ViewProject extends React.Component {
     //listener for incoming messages
     this.socket.on("RECEIVE_MESSAGE", (data) => {
       // make sure we aren't duplicating the current user's chats
-      // if (data.author !== this.props.currentUser.name) {
+      if (data.author !== this.props.currentUser.name) {
       this.props.addChat(this.projectId, data);
-      //}
+      }
     });
 
     this.socket.on("UPDATE_PROJECT", () => {
