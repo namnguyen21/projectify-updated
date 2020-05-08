@@ -98,13 +98,11 @@ export const addTask = (projectId, task) => async (dispatch) => {
 };
 
 // add a single chat message to state
-export const addChat = (projectId, chat) => async (dispatch) => {
-  const response = await axios.put(`/project/${projectId}/chat`, chat);
-
-  dispatch({
+export const addChat = (chat) => {
+  return {
     type: ADD_CHAT,
     payload: chat,
-  });
+  };
 };
 
 export const editTask = (projectId, taskId, status) => async (dispatch) => {

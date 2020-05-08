@@ -86,6 +86,8 @@ app.put("/project/:id/task/new", (req, res) => {
 });
 
 app.put("/project/:id/chat", (req, res) => {
+  console.log(req.body);
+  console.log("-----");
   Projects.findByIdAndUpdate(
     {
       _id: req.params.id,

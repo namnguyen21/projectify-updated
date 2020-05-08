@@ -6,6 +6,7 @@ import ProjectCardColumn from "./ProjectCardColumn";
 import ProjectChat from "./ProjectChat";
 import ProjectAlert from "./ProjectAlert";
 import { fetchProject, addTask, addChat, editTask } from "../../actions";
+import axios from "axios";
 
 const styles = (theme) => ({
   wrapper: {
@@ -65,9 +66,10 @@ class ViewProject extends React.Component {
 
     //listener for incoming messages
     this.socket.on("RECEIVE_MESSAGE", (data) => {
+      console.log(data);
       // make sure we aren't duplicating the current user's chats
       // if (data.author !== this.props.currentUser.name) {
-      this.props.addChat(this.projectId, data);
+      this.props.addChat(data);
       // }
     });
 
@@ -119,6 +121,8 @@ class ViewProject extends React.Component {
     // this.props.addChat(this.projectId, chat);
 
     this.setState({ newChat: "" });
+
+    axios.put(`/project/${this.projectId}/chat`, chat);
   };
 
   //handle submission for a new task
