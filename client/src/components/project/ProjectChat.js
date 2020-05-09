@@ -10,6 +10,7 @@ import {
   Paper,
   Box,
 } from "@material-ui/core";
+import { connect } from "react-redux";
 
 const styles = (theme) => ({
   popper: {
@@ -80,6 +81,14 @@ const styles = (theme) => ({
     maxWidth: "90%",
     wordWrap: "break-word",
   },
+  ownBubble: {
+    backgroundColor: theme.palette.primary.main,
+    // display: "flex",
+    padding: "0 5px",
+    borderRadius: 5,
+    maxWidth: "90%",
+    wordWrap: "break-word",
+  },
   listItem: {
     padding: "0 5px",
     marginBottom: 5,
@@ -87,22 +96,21 @@ const styles = (theme) => ({
 });
 
 class ProjectChat extends Component {
-
   // listEnd = React.createRef();
   listEnd = null;
 
   scrollToBottom = (ele = this.listEnd) => {
-    if(ele){
+    if (ele) {
       ele.scrollIntoView({ behavior: "auto" });
-    }    
-  }
-  
+    }
+  };
+
   componentDidMount() {
     this.scrollToBottom();
   }
-  
+
   componentDidUpdate() {
-    setTimeout(()=> this.scrollToBottom(), 200);
+    setTimeout(() => this.scrollToBottom(), 200);
   }
 
   //anchor element for chat box
@@ -115,7 +123,7 @@ class ProjectChat extends Component {
     this.setState({
       anchorEl: this.state.anchorEl ? null : event.currentTarget,
     });
-    console.log("HandleClick popper called")
+    console.log("HandleClick popper called");
     console.log(event.currentTarget);
   };
 
@@ -133,7 +141,13 @@ class ProjectChat extends Component {
       this.props.chat.map((el) => {
         return (
           <ListItem className={this.props.classes.listItem}>
-            <Paper className={this.props.classes.chatBubble}>
+            <Paper
+              className={
+                el.author == this.props.username
+                  ? this.props.classes.ownBubble
+                  : this.props.classes.chatBubble
+              }
+            >
               <Typography noWrap={false} variant="body2" color="inherit">
                 {el.message}
               </Typography>
@@ -178,11 +192,15 @@ class ProjectChat extends Component {
                 </Typography>
               </Paper>
 
-              <List className={classes.chatList} id="chat-container" >
+              <List className={classes.chatList} id="chat-container">
                 {this.renderChatMessages()}
-                <div style={{ float: "left", clear: "both" }} id="dummyChat"
-                  ref={(el) => {this.listEnd = el}}>
-                </div>
+                <div
+                  style={{ float: "left", clear: "both" }}
+                  id="dummyChat"
+                  ref={(el) => {
+                    this.listEnd = el;
+                  }}
+                ></div>
               </List>
 
               <form
@@ -216,4 +234,12 @@ class ProjectChat extends Component {
   }
 }
 
-export default withStyles(styles)(ProjectChat);
+const mapStateToProps = (state) => {
+  return {
+    username: state.auth.name,
+  };
+};
+
+const wrapped = connect(mapStateToProps)(ProjectChat);
+
+export default withStyles(styles)(wrapped);
