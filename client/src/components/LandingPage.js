@@ -132,7 +132,7 @@ class LandingPage extends React.Component {
                       /ˈpräˌjekt/
                     </Typography>
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={5}>
                     <Typography
                       className={classes.descriptionAnimation}
                       align="middle"
@@ -142,7 +142,7 @@ class LandingPage extends React.Component {
                       to extend outward beyond something else.
                     </Typography>
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={5}>
                     <Typography
                       className={classes.descriptionAnimation}
                       align="middle"
