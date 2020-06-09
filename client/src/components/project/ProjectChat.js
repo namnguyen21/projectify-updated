@@ -8,7 +8,6 @@ import {
   List,
   ListItem,
   Paper,
-  Box,
 } from "@material-ui/core";
 import { connect } from "react-redux";
 
@@ -38,7 +37,6 @@ const styles = (theme) => ({
     boxSizing: "border-box",
     width: "287px",
     padding: "5px 30px",
-    borderRadius: 0,
     marginLeft: "auto",
     marginRight: 20,
     borderRadius: 3,
@@ -96,7 +94,6 @@ const styles = (theme) => ({
 });
 
 class ProjectChat extends Component {
-  // listEnd = React.createRef();
   listEnd = null;
 
   scrollToBottom = (ele = this.listEnd) => {
@@ -143,7 +140,7 @@ class ProjectChat extends Component {
           <ListItem className={this.props.classes.listItem}>
             <Paper
               className={
-                el.author == this.props.username
+                el.author === this.props.username
                   ? this.props.classes.ownBubble
                   : this.props.classes.chatBubble
               }

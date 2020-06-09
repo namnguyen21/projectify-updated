@@ -54,6 +54,7 @@ export default function TaskCard(props) {
       draggedElement.classList.remove(classes.draggedActive);
     }, 100);
   }
+  console.log(author)
 
   return (
     <Card

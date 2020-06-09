@@ -7,7 +7,6 @@ import ViewProject from "./project/ViewProject";
 import LandingPage from "./LandingPage";
 import NewProject from "./project/NewProject";
 import ViewAllProjects from "./project/ViewAllProjects";
-import EnsureLoggedInContainer from "./EnsureLoggedInContainer";
 
 export default () => {
   //hook for light vs dark mode
@@ -60,11 +59,9 @@ export default () => {
         <AppBar toggleTheme={toggleTheme} />
         <Switch>
           <Route path="/" exact component={LandingPage} />
-          {/* <EnsureLoggedInContainer> */}
           <Route path="/project/view/all" exact component={ViewAllProjects} />
           <Route path="/project/view/:id" exact component={ViewProject} />
           <Route path="/project/new" exact component={NewProject} />
-          {/* </EnsureLoggedInContainer> */}
         </Switch>
       </ThemeProvider>
     </Router>

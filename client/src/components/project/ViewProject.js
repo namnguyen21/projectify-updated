@@ -128,6 +128,7 @@ class ViewProject extends React.Component {
   //handle submission for a new task
   onAddSubmit = (event) => {
     event.preventDefault();
+    console.log(this.props.currentUser)
 
     //get current user and add a status to the task
     const task = {
@@ -151,10 +152,10 @@ class ViewProject extends React.Component {
     //material ui classes
     const { classes } = this.props;
     //get chat and tasks from selected project
-    const { chat, tasks } = this.props;
+    const { tasks } = this.props;
     if (
       this.props.projectUsers &&
-      this.props.projectUsers.some((id) => id === this.props.currentUser.userId)
+      this.props.projectUsers.some((id) => id == this.props.currentUser.userId)
     ) {
       return (
         <div className={classes.wrapper}>

@@ -17,12 +17,14 @@ import {
 
 // google auth
 export const signIn = (basicProfile) => async (dispatch) => {
+  console.log(basicProfile.Bd)
   const user = {
-    _id: basicProfile.MU,
-    name: basicProfile.Ad,
+    _id: basicProfile.PU,
+    name: basicProfile.Bd,
   };
 
   const response = await axios.post("/user/new", user);
+  console.log(response.data)
 
   const { _id: userId, name, notifications } = response.data;
 

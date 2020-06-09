@@ -32,12 +32,9 @@ class GoogleAuth extends React.Component {
     const { history,redirectURL } = this.props
     if (isSignedIn) {
       this.props.signIn(this.auth.currentUser.get().getBasicProfile());
-      console.log("when signed in, the redirect URL is: " + redirectURL)
       if(history && redirectURL !== null) history.push(redirectURL);
     } else {
       this.props.signOut();
-      console.log("when note signed in, the redirected to home i.e. /")
-      if(history) history.push("/");
     }
   };
 

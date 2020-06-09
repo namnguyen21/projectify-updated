@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "client/build")));
 
-const server = app.listen(process.env.PORT || 3002, () => {
+const server = app.listen(process.env.PORT || 3001, () => {
   console.log(`server is running on port 3002`);
 });
 
@@ -123,6 +123,7 @@ app.put("/project/:id/task/edit/:taskId", (req, res) => {
 });
 
 app.post("/user/new", (req, res) => {
+  console.log(req.body)
   Users.findOne({ _id: req.body._id }, (err, user) => {
     if (err) {
       throw err;
@@ -184,6 +185,6 @@ app.put("/accept/request/:id", (req, res) => {
   });
 });
 
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build/index.html"));
-});
+// app.get("/*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "client/build/index.html"));
+// });

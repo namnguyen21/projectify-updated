@@ -7,6 +7,7 @@ import {
 
 const INITIAL_STATE = {
   isSignedIn: null,
+  name: null,
   userId: null,
   redirectURL: null,
   notifications: [],

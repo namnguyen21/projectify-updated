@@ -111,11 +111,7 @@ class ButtonAppBar extends React.Component {
             {/* Main app bar buttons - hidden on smaller screen size */}
             <Hidden smDown>
               {this.renderButtons()}
-              <Tooltip title="Toggle Dark Mode">
-              <IconButton onClick={this.props.toggleTheme} color="primary">
-                <Brightness5Icon />
-              </IconButton>
-              </Tooltip>
+              
               <GoogleAuth type="appbar" />
             </Hidden>
 
