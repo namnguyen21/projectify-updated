@@ -5,20 +5,16 @@ import {
   Toolbar,
   Typography,
   Button,
-  ButtonGroup,
-  Menu,
   MenuItem,
+  Menu,
   Hidden,
   Tooltip,
   IconButton,
   withStyles,
-  Badge,
 } from "@material-ui/core";
 
 import DehazeIcon from "@material-ui/icons/Dehaze";
 import ListIcon from "@material-ui/icons/List";
-import Brightness5Icon from "@material-ui/icons/Brightness5";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import AddIcon from "@material-ui/icons/Add";
 import GoogleAuth from "./GoogleAuth";
 import { connect } from "react-redux";

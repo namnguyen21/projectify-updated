@@ -17,14 +17,13 @@ import {
 
 // google auth
 export const signIn = (basicProfile) => async (dispatch) => {
-  console.log(basicProfile.Bd)
   const user = {
     _id: basicProfile.PU,
     name: basicProfile.Bd,
   };
+  console.log(user)
 
   const response = await axios.post("/user/new", user);
-  console.log(response.data)
 
   const { _id: userId, name, notifications } = response.data;
 
@@ -87,7 +86,7 @@ export const addTask = (projectId, task) => async (dispatch) => {
   const taskWithId = { ...task, _id: uuid() };
 
   //update project on back end with new task
-  const response = await axios.put(
+  await axios.put(
     `/project/${projectId}/task/new`,
     taskWithId
   );
@@ -109,7 +108,7 @@ export const addChat = (chat) => {
 
 export const editTask = (projectId, taskId, status) => async (dispatch) => {
   //update project on back end with edited task
-  const response = await axios.put(
+  await axios.put(
     `/project/${projectId}/task/edit/${taskId}`,
     { status: status }
   );

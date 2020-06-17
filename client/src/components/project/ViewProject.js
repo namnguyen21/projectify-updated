@@ -155,7 +155,7 @@ class ViewProject extends React.Component {
     const { tasks } = this.props;
     if (
       this.props.projectUsers &&
-      this.props.projectUsers.some((id) => id == this.props.currentUser.userId)
+      this.props.projectUsers.some((id) => parseInt(id) === parseInt(this.props.currentUser.userId))
     ) {
       return (
         <div className={classes.wrapper}>
